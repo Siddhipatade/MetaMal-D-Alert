@@ -63,7 +63,7 @@ model.compile(optimizer=Adam(learning_rate=0.0001), loss='binary_crossentropy', 
 early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
 # Train the model for more epochs
-history = model.fit(X_train, y_train, epochs=11, batch_size=32, validation_data=(X_test, y_test), callbacks=[early_stopping])
+history = model.fit(X_train, y_train, epochs=20, batch_size=10, validation_data=(X_test, y_test), callbacks=[early_stopping])
 
 
 # Save the trained model and tokenizer

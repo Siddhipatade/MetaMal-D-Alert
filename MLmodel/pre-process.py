@@ -4,9 +4,8 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import numpy as np
 
-
 # Load the saved model
-model = load_model("model/malware_detection_model.h5")
+model = load_model("best_model.h5")
 
 # Load the saved Tokenizer
 with open("model/tokenizer.pkl", "rb") as tokenizer_file:
@@ -28,31 +27,44 @@ def preprocess_data(api_calls):
     return padded_sequences
 
 # Load new data from JSON file
+try:
+    with open(f"beg.json", "r") as json_file:
+        data = json.load(json_file)
+except json.JSONDecodeError as e:
+    print(f"Error loading JSON file: {e}")
+    data = []
 
-with open(f"dummy.json", "r") as json_file:
-    new_data_json = json.load(json_file)
+# Process each dictionary in the JSON data
+for entry in data:
+    # Search for the relevant string in each dictionary
+    relevant_string = None
+    if isinstance(entry, dict):
+        for key, value in entry.items():
+            if isinstance(value, str) and "api" in value.lower():  # Adjust this condition as needed
+                relevant_string = value
+                break
 
-# Extract API calls from JSON data
-new_data_list = new_data_json  # Assuming it's a list of dictionaries
-for entry in new_data_list:
-    api_calls = entry['api_calls']
+        if relevant_string is not None:
+            # Preprocess the new data
+            new_data_sequences = preprocess_data([relevant_string])
 
-    # Preprocess the new data
-    new_data_sequences = preprocess_data(api_calls)
+            # Ensure the sequences have the correct length (177 in this case)
+            if new_data_sequences.shape[1] != 177:
+                # You may need to adjust your padding strategy to match the model's input shape
+                new_data_sequences = pad_sequences(new_data_sequences, padding='post', maxlen=177)
 
-    # Ensure the sequences have the correct length (177 in this case)
-    if new_data_sequences.shape[1] != 177:
-        # You may need to adjust your padding strategy to match the model's input shape
-        new_data_sequences = pad_sequences(new_data_sequences, padding='post', maxlen=177)
+            new_data_padded = pad_sequences(new_data_sequences, padding='post', maxlen=177)
 
-    new_data_padded = pad_sequences(new_data_sequences, padding='post', maxlen=177)
+            # Make predictions
+            predictions = model.predict(new_data_padded)
 
-    # Make predictions
-    predictions = model.predict(new_data_padded)
+            # Threshold predictions for binary classification
+            threshold = 0.5
+            binary_predictions = (predictions > threshold).astype(int)
 
-    # Threshold predictions (assuming binary classification)
-    threshold = 0.5
-    binary_predictions = (predictions > threshold).astype(int)
-
-    # Display or use the predictions
-    print(f"Predictions for {entry['ID']}:", binary_predictions)
+            # Display or use the predictions
+            print(f"Predictions for {entry['ID']}:", binary_predictions)
+        else:
+            print(f"No relevant string found in entry {entry.get('ID', 'Unknown')}")
+    else:
+        print(f"Invalid entry format: {entry}")

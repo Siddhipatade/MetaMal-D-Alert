@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload Interface</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- Include Dropzone.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+</head>
+<body>
+  <div class="frame">
+    <div class="center">
+      
+      <div class="bar"></div>
+      <div class="title">Drop file to upload</div>
+      <!-- Replace .dropzone with #demo-upload to match Dropzone.js ID -->
+      <form action="/upload" class="dropzone" id="demo-upload">
+        <div class="dz-default dz-message"><span>Drop files here or click to upload</span></div>
+      </form>
+      <button iid="submit-btn" class="scan-btn">Scan File</button> <!-- Added scan button -->
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+  <script>
+    // Initialize Dropzone.js
+    Dropzone.autoDiscover = false; // Prevent Dropzone from automatically initializing
+
+    var myDropzone = new Dropzone("#demo-upload", {
+      url: "/upload", // URL where files should be uploaded
+      maxFilesize: 3, // Maximum file size in MB
+      acceptedFiles: '.txt, .pdf', // Limit accepted file types
+      dictDefaultMessage: "Drop files here or click to upload", // Default message
+      success: function(file, response) {
+        // Handle successful uploads
+        console.log("File uploaded successfully:", file);
+      },
+      error: function(file, errorMessage) {
+        // Handle upload errors
+        console.error("Error uploading file:", errorMessage);
+      }
+    });
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>

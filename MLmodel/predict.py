@@ -9,7 +9,7 @@ with open("model/tokenizer.pkl", "rb") as tokenizer_file:
     tokenizer = pickle.load(tokenizer_file)
 
 # Assuming 'file_path' is the path to the file containing API call sequences
-file_path = 'dummy.json'
+file_path = 'beg.json'
 
 # Step 1: Preprocess the File
 with open(file_path, 'r') as file:
@@ -22,7 +22,7 @@ your_maxlen = 177  # Replace 'your_maxlen' with the actual maxlen used during tr
 padded_sequences = pad_sequences(sequences, padding='post', maxlen=your_maxlen)
 
 # Step 3: Load the Model
-loaded_model = load_model("model/malware_detection_model.h5")
+loaded_model = load_model("best_model.h5")
 
 # Step 4: Make Predictions
 predictions = loaded_model.predict(padded_sequences)

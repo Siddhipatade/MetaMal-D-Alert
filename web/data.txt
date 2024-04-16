@@ -1,0 +1,5 @@
+open_file read_content close_file
+send_request receive_response process_data
+login authenticate_user access_data
+parse_xml validate_data generate_report
+...
