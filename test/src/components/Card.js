@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 export default function Card() {
   const fileUploadRef = useRef(null);
   const [file, setFile] = useState(null);
-
+  const [result, setResult] = useState({});
+  const [modelResult, setModelResult] = useState({});
   useEffect(() => {
     if (fileUploadRef.current) {
       fileUploadRef.current.style.opacity = "0";
@@ -41,7 +43,44 @@ export default function Card() {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
+    checkAndUploadFile(selectedFile);
   };
+
+  // Function to handle the upload to the API
+  const uploadFileToAPI = async (file, environmentId) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("environment_id", environmentId);
+
+    const result = await axios.get(
+      "http://localhost:5000/result/66134215e9af5258f3032973"
+    );
+
+    console.log(result.data);
+    setResult(result.data);
+
+    const detect = await axios.post(
+      "http://localhost:32768/predict",
+      result.data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log(detect);
+    setModelResult(detect);
+  };
+
+  const checkAndUploadFile = (file) => {
+    if (file && file.name.endsWith(".exe")) {
+      // Set the environment ID as required; example: Windows 10 64 bit
+      const environmentId = 160;
+      uploadFileToAPI(file, environmentId);
+    }
+  };
+
   const uploadFunction = () => {
     Swal.fire({
       title: "<strong>Malware File Report</strong>",
