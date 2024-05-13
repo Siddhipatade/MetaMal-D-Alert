@@ -16,6 +16,8 @@ export default function Card() {
       fileBrowser.addEventListener("click", handleFileBrowserClick);
     }
 
+    
+
     return () => {
       if (fileBrowser) {
         fileBrowser.removeEventListener("click", handleFileBrowserClick);
