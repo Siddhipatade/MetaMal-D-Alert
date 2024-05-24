@@ -1,0 +1,47 @@
+.logo-img {
+    height: 40px;
+    /* Adjusted for a larger logo */
+    margin-right: 9px;
+    /* Space between logo and text */
+}
+
+.brand-text {
+    font-size: 1.3rem;
+    /* Increased font size */
+    font-weight: bold;
+    /* Bold text */
+}
+
+.navbar {
+    background-color: #089289 !important;
+    /* Ensure background color consistency */
+    padding: 33px 33px;
+    /* Increased padding to make navbar larger */
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: #d4d4d4 !important;
+    /* Slightly lighter color on hover */
+}
+
+.form-control {
+    border-radius: 0.23rem;
+    /* Slightly rounded corners */
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-icon {
+    font-size: 1.3rem;
+    /* Larger icon size */
+    font-weight: bold;
+    /* Bold icon */
+}

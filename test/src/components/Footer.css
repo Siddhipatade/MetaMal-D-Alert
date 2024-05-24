@@ -1,0 +1,32 @@
+/* Custom Footer CSS */
+
+footer {
+    background-color: #f7f9fa;
+    /* Light background color */
+    box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for the footer */
+}
+
+footer .text-muted {
+    color: #6c757d !important;
+    /* Ensure text-muted uses the correct color */
+}
+
+footer a.text-muted {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+footer a.text-muted:hover {
+    color: var(--main-color);
+    /* Change to your primary color on hover */
+}
+
+footer .nav {
+    margin-top: 10px;
+}
+
+footer .nav li {
+    margin-left: 33px;
+    margin-right: 33px;
+}
