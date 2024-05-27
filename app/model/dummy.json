@@ -1,0 +1,6 @@
+[
+    {"ID": "e2095dbe5ff7a1e7113abdf8d26bd8532789ce5b725fbf5321225e743b8e29b0", "api_calls": ["LdrUnloadDll", "NtOpenSection", "CoUninitialize", "GetForegroundWindow"]},
+    {"ID": "2c760c948f855b1a6c1fb0107628df6d938f8d8a5c58a2e6ee0a9c8e85134075", "api_calls": ["NtQueryValueKey", "LdrUnloadDll", "RegCloseKey", "NtReadFile", "GetFileSize", "NtOpenMutant", "LdrGetProcedureAddress", "NtOpenKey", "CreateProcessInternalW", "RegSetValueExA", "CopyFileA", "NtCreateFile", "NtClose", "NtAllocateVirtualMemory", "NtTerminateProcess", "GetSystemDirectoryA", "NtProtectVirtualMemory", "NtWriteFile", "RegCreateKeyExA", "NtFreeVirtualMemory"]},
+    {"ID": "f4a904b61fa8f5f3294dde65bfb59ec41ff724209c7d232694f592fba9547732", "api_calls": [ "__exception__", "NtTerminateProcess"]}
+
+]
