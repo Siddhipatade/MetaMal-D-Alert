@@ -1,0 +1,243 @@
+:root {
+    --main-color: #089289;
+    /* Define a shared color */
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    height: 50px;
+    /* Adjust according to your navbar height */
+    background-color: #fff;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+footer {
+    height: 100px;
+    /* Adjust according to your footer height */
+    background-color: #fff;
+    box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    padding-top: 50px;
+    /* Space for navbar */
+    padding-bottom: 100px;
+    /* Space for footer */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.area {
+    width: 300px;
+    height: 200px;
+    border: 2px dashed var(--main-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+    transition: border-color 0.3s;
+}
+
+.area:hover {
+    border-color: #089289;
+}
+
+.btn-scan-now {
+    margin-top: 10px;
+    background-color: white;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.btn-scan-now:hover {
+    background-color: white;
+    border-color: #089289;
+    color: #089289;
+}
+
+.btn-cancel {
+    margin-top: 13px;
+    background-color: white;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: white;
+    border-color: #089289;
+    color: #089289;
+}
+
+.analysis-card {
+    width: 90%;
+    margin-top: 23px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.analysis-card img.result-icon {
+    width: 101px;
+    height: 111px;
+    margin-bottom: 10px;
+}
+
+.analysis-card.malware {
+    background-color: #ffcccc;
+    transform: scale(1.05);
+}
+
+.analysis-card.safe {
+    background-color: #ccffcc;
+    transform: scale(1.05);
+}
+
+.result-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.result-header h4 {
+    margin-top: 10px;
+}
+
+.result-details p {
+    margin: 5px 0;
+}
+
+.scanning-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scanning-popup p {
+    margin-top: 10px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 39vh;
+    background-color: #f9f9f9;
+}
+
+.custom-card {
+    max-width: 800px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+.custom-card:hover {
+    transform: scale(1.02);
+}
+
+.image-container {
+    overflow: hidden;
+}
+
+.image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.area {
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #4CAF50;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+    transition: border-color 0.3s;
+}
+
+.area:hover {
+    border-color: #388E3C;
+}
+
+.btn-scan-now {
+    margin-top: 10px;
+    background-color: white;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.btn-scan-now:hover {
+    background-color: white;
+    border-color: #388E3C;
+    color: #388E3C;
+}
+
+.analysis-card {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, transform 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.analysis-card img.result-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.analysis-card.malware {
+    background-color: #ffcccc;
+    transform: scale(1.05);
+}
+
+.analysis-card.safe {
+    background-color: #ccffcc;
+    transform: scale(1.05);
+}
